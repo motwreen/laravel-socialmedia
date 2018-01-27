@@ -56,7 +56,7 @@ class Driver implements DriverInterface
 
     public function post($params,$access_token)
     {
-        $this->buildConfig()
+        $this->buildConfig($params,$access_token);
         $post = new Post($this->fb,$params);
         return $post->exec();
     }

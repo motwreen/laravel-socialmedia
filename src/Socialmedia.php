@@ -39,9 +39,9 @@ class Socialmedia
      * @param array $drivers
      * @return array
      */
-    public function post($params,$drivers=[])
+    public function post($access_token,$params,$drivers=[])
     {
-        return $this->execWithDrivers($drivers,'post',$params);
+        return $this->execWithDrivers($drivers,'post',$params,$access_token);
     }
 
     /**
@@ -60,12 +60,12 @@ class Socialmedia
      * @param $params
      * @return array
      */
-    private function execWithDrivers($drivers=[],$method,$params)
+    private function execWithDrivers($drivers=[],$method,$params,$access_token)
     {
         $res = [];
         if (empty($drivers)){
             foreach ($this->availableDrivers as $short => $driver){
-                $res[$short] = $driver->{$method}($params);
+                $res[$short] = $driver->{$method}($params,$access_token);
             }
         }else{
             foreach ($drivers as $short){
