@@ -38,26 +38,25 @@ class Driver implements DriverInterface
      * @param string $default_graph_version
      * @param bool $default_access_token
      */
-    public function __construct($app_id = false, $app_secret = false, $default_graph_version = 'v2.11', $default_access_token = false)
+
+    public function buildConfig(array $config,$access_token)
     {
-        $this->app_id = $app_id ?: env('FACEBOOK_APP_ID');
-        $this->app_secret = $app_secret ?: env('FACEBOOK_APP_SECRET');
-        $this->default_graph_version = $default_graph_version;
-        $this->default_access_token = $default_access_token ?: env('FACEBOOK_ACCESS_TOKEN');
+        $this->app_id                = $config['app_id'] ?: env('FACEBOOK_APP_ID');
+        $this->app_secret            = $config['app_secret'] ?: env('FACEBOOK_APP_SECRET');
+        $this->default_graph_version = "v2.11";
+        $this->default_access_token  = $access_token ?: null;
         $this->fb = new Facebook(array_filter([
-            'app_id' =>  $this->app_id,
-            'app_secret' =>  $this->app_secret,
+            'app_id'                =>  $this->app_id,
+            'app_secret'            =>  $this->app_secret,
             'default_graph_version' =>  $this->default_graph_version,
-            'default_access_token' => $this->default_access_token
+            'default_access_token'  => $this->default_access_token
         ]));
+        
     }
 
-    /**
-     * @param $params
-     * @return string
-     */
-    public function post($params)
+    public function post($params,$access_token)
     {
+        $this->buildConfig()
         $post = new Post($this->fb,$params);
         return $post->exec();
     }
