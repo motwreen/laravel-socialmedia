@@ -40,10 +40,10 @@ class Driver implements DriverInterface
      */
     public function __construct($consumerKey = false, $consumerSecret = false, $accesstoken = false, $accessTokenSecret = false)
     {
-        $this->consumerKey = $consumerKey ?: loadOption('TWITTER_CONSUMER_KEY');
-        $this->consumerSecret = $consumerSecret ?: loadOption('TWITTER_CONSUMER_SECRET');
-        $this->accessToken = $accesstoken ?: loadOption('TWITTER_ACCESS_TOKEN');
-        $this->accessTokenSecret = $accessTokenSecret ?: loadOption('TWITTER_ACCESS_TOKEN_SECRET');
+        $this->consumerKey = $consumerKey ?: env('TWITTER_CONSUMER_KEY');
+        $this->consumerSecret = $consumerSecret ?: env('TWITTER_CONSUMER_SECRET');
+        $this->accessToken = $accesstoken ?: env('TWITTER_ACCESS_TOKEN');
+        $this->accessTokenSecret = $accessTokenSecret ?: env('TWITTER_ACCESS_TOKEN_SECRET');
 
         $this->twitter = new TwitterOAuth($this->consumerKey,$this->consumerSecret,$this->accessToken,$this->accessTokenSecret);
     }

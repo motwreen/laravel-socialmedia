@@ -40,10 +40,10 @@ class Driver implements DriverInterface
      */
     public function __construct($app_id = false, $app_secret = false, $default_graph_version = 'v2.11', $default_access_token = false)
     {
-        $this->app_id = $app_id ?: loadOption('FACEBOOK_APP_ID');
-        $this->app_secret = $app_secret ?: loadOption('FACEBOOK_APP_SECRET');
+        $this->app_id = $app_id ?: env('FACEBOOK_APP_ID');
+        $this->app_secret = $app_secret ?: env('FACEBOOK_APP_SECRET');
         $this->default_graph_version = $default_graph_version;
-        $this->default_access_token = $default_access_token ?: loadOption('FACEBOOK_ACCESS_TOKEN');
+        $this->default_access_token = $default_access_token ?: env('FACEBOOK_ACCESS_TOKEN');
         $this->fb = new Facebook(array_filter([
             'app_id' =>  $this->app_id,
             'app_secret' =>  $this->app_secret,

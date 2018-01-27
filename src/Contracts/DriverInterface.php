@@ -1,10 +1,6 @@
 <?php
 namespace Motwreen\Socialmedia\Contracts;
 
-/**
- * Class DriverInterface
- * @package Marvinosswald\Socialmedia\Contracts
- */
 interface DriverInterface
 {
     /**

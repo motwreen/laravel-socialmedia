@@ -1,14 +1,10 @@
 <?php
-namespace marvinosswald\Socialmedia\Drivers\Facebook;
+namespace Motwreen\Socialmedia\Drivers\Facebook;
 
 use Facebook\Facebook;
 use Facebook\FacebookRequest;
-use marvinosswald\Socialmedia\Contracts\PostInterface;
+use Motwreen\Socialmedia\Contracts\PostInterface;
 
-/**
- * Class Post
- * @package Marvinosswald\Socialmedia\Drivers\Facebook
- */
 class Post implements PostInterface{
     /**
      * @var
