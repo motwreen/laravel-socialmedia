@@ -1,5 +1,5 @@
 <?php
-namespace Motwreen\Socialmedia\;
+namespace Motwreen\Socialmedia;
 use Motwreen\Socialmedia\Contracts\DriverInterface as Driver;
 use Motwreen\Socialmedia\Drivers\Facebook\Driver as FacebookDriver;
 
