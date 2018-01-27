@@ -1,6 +1,6 @@
 #laravel-socialmedia
 
-[![Build Status](https://travis-ci.org/motwreen/laravel-socialmedia.svg?branch=master)](https://travis-ci.org/Motwreen/laravel-socialmedia)
+[![Build Status](https://travis-ci.org/motwreen/laravel-socialmedia.svg?branch=master)](https://travis-ci.org/motwreen/laravel-socialmedia)
 [![MIT License](https://img.shields.io/packagist/l/motwreen/laravel-socialmedia.svg?style=flat-square)](https://packagist.org/packages/motwreen/laravel-socialmedia)
 
 The first step will be to implement a post function for each Driver and on this way a matching delete function for testing reasons.
