@@ -25,7 +25,7 @@ class Driver implements DriverInterface
     /**
      * @var string
      */
-    public $default_access_token;
+    public $access_token;
     /**
      * @var Facebook
      */
@@ -36,7 +36,7 @@ class Driver implements DriverInterface
      * @param bool $app_id
      * @param bool $app_secret
      * @param string $default_graph_version
-     * @param bool $default_access_token
+     * @param bool $access_token
      */
 
     public function buildConfig(array $config,$access_token)
@@ -44,12 +44,12 @@ class Driver implements DriverInterface
         $this->app_id                = $config['app_id'] ?: env('FACEBOOK_APP_ID');
         $this->app_secret            = $config['app_secret'] ?: env('FACEBOOK_APP_SECRET');
         $this->default_graph_version = "v2.11";
-        $this->default_access_token  = $access_token ?: null;
+        $this->access_token  = $access_token ?: null;
         $this->fb = new Facebook(array_filter([
             'app_id'                =>  $this->app_id,
             'app_secret'            =>  $this->app_secret,
             'default_graph_version' =>  $this->default_graph_version,
-            'default_access_token'  => $this->default_access_token
+            'default_access_token'  => $this->access_token
         ]));
         
     }
