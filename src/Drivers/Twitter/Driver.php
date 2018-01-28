@@ -38,7 +38,7 @@ class Driver implements DriverInterface
      * @param bool $accesstoken
      * @param bool $accessTokenSecret
      */
-    public function __construct($consumerKey = false, $consumerSecret = false, $accesstoken = false, $accessTokenSecret = false)
+/*    public function __construct($consumerKey = false, $consumerSecret = false, $accesstoken = false, $accessTokenSecret = false)
     {
         $this->consumerKey = $consumerKey ?: env('TWITTER_CONSUMER_KEY');
         $this->consumerSecret = $consumerSecret ?: env('TWITTER_CONSUMER_SECRET');
@@ -46,15 +46,26 @@ class Driver implements DriverInterface
         $this->accessTokenSecret = $accessTokenSecret ?: env('TWITTER_ACCESS_TOKEN_SECRET');
 
         $this->twitter = new TwitterOAuth($this->consumerKey,$this->consumerSecret,$this->accessToken,$this->accessTokenSecret);
+    }*/
+
+    public function buildConfig(array $config)
+    {
+        $this->consumerKey           = @$config['consumerKey'] ?: env('consumerKey');
+        $this->consumerSecret        = @$config['consumerSecret'] ?: env('consumerSecret');
+        $this->accessToken           = @$config['accessToken'] ?: env('accessToken');
+        $this->accessTokenSecret     = @$config['accessTokenSecret'] ?: env('accessTokenSecret');
+        $this->twitter = new TwitterOAuth($this->consumerKey,$this->consumerSecret,$this->accessToken,$this->accessTokenSecret);
+
     }
 
     /**
      * @param $params
      * @return string
      */
-    public function post($params)
+    public function post($config,$post)
     {
-        $post = new Post($this->twitter,$params);
+        $this->buildConfig($config);
+        $post = new Post($this->twitter,$post);
         return $post->exec();
     }
 

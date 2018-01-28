@@ -7,5 +7,5 @@ interface DriverInterface
      * @param $params
      * @return mixed
      */
-    public function post($params,$access_token);
+    public function post($config,$post);
 }

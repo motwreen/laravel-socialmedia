@@ -52,7 +52,7 @@ class Driver implements DriverInterface
      * @param $params
      * @return string
      */
-    public function post($params)
+    public function post($params,$access_token)
     {
         $post = new Post($this->pinterest,$params);
         return $post->exec();
