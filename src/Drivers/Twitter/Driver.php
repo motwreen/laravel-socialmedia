@@ -65,8 +65,9 @@ class Driver implements DriverInterface
     public function post($config,$post)
     {
         $this->buildConfig($config);
-        $post = new Post($this->twitter,$post);
-        return $post->exec();
+        $post['message'] = str_limit(strip_tags($post['message']),180,'');
+        $status = new Post($this->twitter,$post);
+        return $status->exec();
     }
 
     public function delete($id)
