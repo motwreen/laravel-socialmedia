@@ -154,4 +154,4 @@ class Post implements PostInterface{
             'status' => $this->message.' '.$this->link
         ]);
     }
-}
+} 
